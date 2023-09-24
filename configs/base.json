@@ -9,7 +9,7 @@
         "batch_size": 64,
         "lr_decay": 0.7
     },
-    "CS4243data": {
+    "CS4243dataset": {
         "dataset_path": "../data/frames",
         "label_dict": {
             "norm": 0,
