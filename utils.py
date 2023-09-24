@@ -11,6 +11,22 @@ def read_image(img_path):
     img = Image.open(img_path)
     return img
 
+def save_checkpoint(model, optimizer, iteration, checkpoint_path):
+    if hasattr(model, 'module'):
+        state_dict = model.module.state_dict()
+    else:
+        state_dict = model.state_dict()
+    torch.save({'model': state_dict,
+              'iteration': iteration,
+              'optimizer': optimizer.state_dict()}, checkpoint_path)
+
+def latest_checkpoint_path(dir_path, regex="model_*.pth"):
+    f_list = glob.glob(os.path.join(dir_path, regex))
+    f_list.sort(key=lambda f: int("".join(filter(str.isdigit, f))))
+    x = f_list[-1]
+    print(x)
+    return x
+
 def get_hparams(init=True):
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config', type=str, default="./configs/base.json",

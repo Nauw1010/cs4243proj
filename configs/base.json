@@ -9,19 +9,15 @@
         "batch_size": 64,
         "lr_decay": 0.7
     },
-    "WBCdata": {
-        "training_files": "../data/dataset/WBC_100/train",
-        "validation_files": "../data/dataset/WBC_100/val",
+    "CS4243data": {
+        "dataset_path": "../data/frames",
         "label_dict": {
-            "Basophil": 0,
-            "Eosinophil": 1,
-            "Lymphocyte": 2,
-            "Monocyte": 3,
-            "Neutrophil": 4
+            "norm": 0,
+            "weap": 1
         },
         "image_size": 512,
         "patch_size": 32,
-        "num_classes": 5
+        "num_classes": 2
     },
     "ViTmodel": {
         "dim": 1024,
@@ -30,5 +26,8 @@
         "mlp_dim": 2048,
         "dropout": 0.1,
         "emb_dropout": 0.1
+    },
+    "save": {
+        "model_save_path": "./model_weights"
     }
 }
